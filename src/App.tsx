@@ -1,16 +1,19 @@
 import React, { FC } from "react";
-import { userSlice } from "./store/reducers/UserSlice";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import { fetchPosts } from "./store/reducers/ActionCreators"
 
 const App: FC = () => {
-  const {count} = useAppSelector(state => state.userReducer)
-  const {increment} = userSlice.actions
   const dispatch = useAppDispatch()
-  
+  const {posts} = useAppSelector(state => state.userReducer)
+
+  useEffect(() =>{
+    dispatch(fetchPosts())
+  }, [])
+
   return (
   <div>
-    <h1>{count}</h1>
-    <button onClick={() => dispatch(increment(1))}>INCREMENT</button>
+    {JSON.stringify(posts, null, 2)}
   </div>
   );
 };
