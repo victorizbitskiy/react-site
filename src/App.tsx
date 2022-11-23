@@ -5,7 +5,7 @@ import { fetchPosts } from "./store/reducers/ActionCreators"
 
 const App: FC = () => {
   const dispatch = useAppDispatch()
-  const {posts} = useAppSelector(state => state.userReducer)
+  const {posts, isLoading, error} = useAppSelector(state => state.userReducer)
 
   useEffect(() =>{
     dispatch(fetchPosts())
@@ -13,7 +13,9 @@ const App: FC = () => {
 
   return (
   <div>
-    {JSON.stringify(posts, null, 2)}
+    {isLoading && <h1>Идет загрузка...</h1>}
+    {error && <h1>{error}</h1>}
+    {posts.length > 0 && JSON.stringify(posts, null, 2)}
   </div>
   );
 };

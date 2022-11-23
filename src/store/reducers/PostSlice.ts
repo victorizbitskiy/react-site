@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { useActionData } from "react-router-dom";
 import { IPost } from "../../models/IPost";
+import { fetchPosts } from "./ActionCreators";
 
 interface PostState {
   posts: IPost[];
@@ -16,20 +18,20 @@ const initialState: PostState = {
 export const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {
-    postsFetching(state) {
-      state.isLoading = true
-    },
-    postsFetchingSuccess(state, action: PayloadAction<IPost[]>) {
+  reducers: {},
+  extraReducers: {
+    [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPost[]>) => {
       state.isLoading = false
       state.error = ''
       state.posts = action.payload
-
     },
-    postsFetchingError(state, action: PayloadAction<string>) {
+    [fetchPosts.pending.type]: (state) => {
+      state.isLoading = true
+    },
+    [fetchPosts.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false
       state.error = action.payload
-    }
+    },
   }
 })
 
