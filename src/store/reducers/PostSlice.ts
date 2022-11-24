@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { useActionData } from "react-router-dom";
 import { IPost } from "../../models/IPost";
 import { fetchPosts } from "./ActionCreators";
 
