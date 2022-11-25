@@ -18,7 +18,6 @@ const App: FC = () => {
     {isLoading && <h1>Идет загрузка...</h1>}
     {error && <h1>{error}</h1>}
     <Posts posts={posts}/>
-    {/* {posts.length > 0 && JSON.stringify(posts, null, 2)} */}
   </div>
   );
 };
