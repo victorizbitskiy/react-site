@@ -8,8 +8,13 @@ interface IPostItemProps {
 const PostItem: FC<IPostItemProps> = ({post}) => {
   return (
     <div className='post'>
-      {post.id}.{post.title}
-    </div>
+      <div>
+        {post.title}
+        <div className='post-body'>
+          {post.body}
+        </div>
+    </div>      
+  </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Posts from "./components/Posts";
 import { useAppDispatch, useAppSelector } from "./hooks/redux";
 import { fetchPosts } from "./store/reducers/ActionCreators"
+import './App.css';
 
 const App: FC = () => {
   const dispatch = useAppDispatch()
