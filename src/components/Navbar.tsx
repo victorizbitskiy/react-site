@@ -5,32 +5,16 @@ const { Header} = Layout;
 
 const items: MenuProps['items'] = [
   {
-    label: 'Navigation One',
-    key: 'key1',
+    label: <a href='/' target="_blank" rel='noopener noreferrer'>Home</a>,
+    key: 'home',
   },
   {
-    label: 'Navigation Two',
-    key: 'key2',
+    label: <a href='/work' target="_blank" rel='noopener noreferrer'>Work</a>,
+    key: 'work',
   },
   {
-    label: 'Navigation Three',
-    key: 'key3',
-  },
-  {
-    label: 'Navigation Four',
-    key: 'key4',
-  },
-  {
-    label: 'Navigation Five',
-    key: 'key5',
-  },
-  {
-    label: 'Navigation Six',
-    key: 'key6',
-  },
-  {
-    label: 'Navigation Seven',
-    key: 'key7',
+    label: <a href='https://github.com/victorizbitskiy' target="_blank" rel='noopener noreferrer'>GitGub</a>,
+    key: 'github',
   },
 ]
 
@@ -43,7 +27,7 @@ const Navbar : FC = () => {
         theme="dark"
         mode="horizontal"
         style={{justifyContent: "center"}}
-        defaultSelectedKeys={['2']}
+        defaultSelectedKeys={['1']}
         items={items}
       />
     </Header>
