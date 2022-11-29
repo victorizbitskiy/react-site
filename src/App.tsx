@@ -1,34 +1,21 @@
-import React, { FC } from "react";
-import { useEffect } from "react";
-import Posts from "./components/Posts";
-import { useAppDispatch, useAppSelector } from "./hooks/redux";
-import { fetchPosts } from "./store/reducers/ActionCreators"
+import React, { FC, useEffect } from "react";
 import 'antd/dist/reset.css';
 import './App.css';
-import {Breadcrumb, Layout} from "antd"
+import {Layout} from "antd"
 import Navbar from "./components/Navbar";
+import AppRouter from "./components/AppRouter";
 
 const { Content, Footer } = Layout;
 
 const App: FC = () => {
-  const dispatch = useAppDispatch()
 
-  useEffect(() =>{
-    dispatch(fetchPosts())
+  useEffect(() => {
   }, [])
-
-  const {posts, isLoading, error} = useAppSelector(state => state.userReducer)
-
+  
   return (
   <Layout>
     <Navbar />
-    <Content style={{ padding: '0 50px' }}>
-
-    {isLoading && <h1>Идет загрузка...</h1>}
-    {error && <h1>{error}</h1>}
-    <Posts posts={posts}/>
-
-    </Content>
+    <AppRouter />
     <Footer style={{ textAlign: 'center' }}>Copyright ©2022 All rights reserved</Footer>
   </Layout>
   );
