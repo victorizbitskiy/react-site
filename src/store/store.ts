@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from './reducers/PostSlice';
+import postReducer from './reducers/PostSlice';
 
 const rootReducer = combineReducers({
-  userReducer
+  postReducer
 })
 
 export const setupStore = () => {

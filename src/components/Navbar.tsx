@@ -21,7 +21,7 @@ const items: MenuProps['items'] = [
 
 const Navbar : FC = () => {
   
-  const [current, setCurrent] = useState('home');
+  const [current, setCurrent] = useState('');
   const navigate = useNavigate()
 
   const onClick: MenuProps['onClick'] = (e) => {

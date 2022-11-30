@@ -12,7 +12,7 @@ const Home: FC = () => {
     dispatch(fetchPosts())
   }, [])
 
-  const {posts, isLoading, error} = useAppSelector(state => state.userReducer)
+  const {posts, isLoading, error} = useAppSelector(state => state.postReducer)
 
   return (
     <Content style={{ padding: '0 50px' }}>
