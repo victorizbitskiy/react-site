@@ -21,6 +21,7 @@ const App: FC = () => {
         <Content style={{ padding: '0 24px', minHeight: 280 }}>
         <AppRouter />
         </Content>
+        <SideBar />
       </Layout>
     <Footer style={{ textAlign: 'center', position: "static", bottom: "0" }}>Copyright ©2022 All rights reserved</Footer>
   </Layout>
