@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import { Menu, MenuProps } from 'antd';
 import {Layout} from "antd"
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
 const {Sider} = Layout
 
