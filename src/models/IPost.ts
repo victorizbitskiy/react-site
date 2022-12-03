@@ -4,3 +4,8 @@ export interface IPost{
   title: string;
   body: string
 }
+
+export interface PostResponse {
+  posts: IPost[];
+  totalPages: Number;
+}

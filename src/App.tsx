@@ -10,8 +10,8 @@ const { Content, Footer} = Layout;
 
 const App: FC = () => {
 
-  useEffect(() => {
-  }, [])
+  // useEffect(() => {
+  // }, [])
   
   return (
   <Layout>
