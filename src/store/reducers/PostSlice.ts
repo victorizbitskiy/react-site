@@ -6,7 +6,7 @@ interface PostState {
   posts: IPost[];
   isLoading: boolean;
   error: string;
-  totalPages: Number;
+  totalPages: number;
 }
 
 const initialState: PostState = {

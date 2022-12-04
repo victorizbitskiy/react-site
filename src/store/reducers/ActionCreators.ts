@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IPost } from "../../models/IPost";
+import { useState } from 'react';
 
 export const fetchPosts = createAsyncThunk(
   'post/fetchAll',
-  async (_, thunkAPI) => {
+  async (page: number, thunkAPI) => {
     try {
-      const response = await axios.get<IPost>('https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5')
+      const response = await axios.get<IPost>(`https://jsonplaceholder.typicode.com/posts?_page=${page}`)
       return ({ 
         posts: response.data,
         totalPages: response.headers["x-total-count"],

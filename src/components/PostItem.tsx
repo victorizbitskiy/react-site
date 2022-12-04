@@ -9,7 +9,7 @@ const PostItem: FC<IPostItemProps> = ({post}) => {
   return (
     <div className='post'>
       <div>
-        {post.title}
+       {post.id}. {post.title}
         <div className='post-body'>
           {post.body}
         </div>

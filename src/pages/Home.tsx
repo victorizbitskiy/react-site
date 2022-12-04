@@ -1,26 +1,36 @@
+import { Pagination, PaginationProps } from 'antd';
 import { Content } from 'antd/es/layout/layout';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchPosts } from '../store/reducers/ActionCreators';
 
 const Home: FC = () => {
-
   const dispatch = useAppDispatch()
 
   useEffect(() =>{
-    dispatch(fetchPosts())
+    dispatch(fetchPosts(1))
   }, [])
 
   const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postReducer)
+  const [currentPage, setCurrentPage] = useState(1)
   
-  {console.log(totalPages)}
+  const onChange: PaginationProps['onChange'] = (page) => {
+    setCurrentPage(page)
+    dispatch(fetchPosts(page))
+  }
 
   return (
     <Content style={{ padding: '0 50px' }}>
       {isLoading && <h1>Идет загрузка...</h1>}
       {error && <h1>{error}</h1>}
       <Posts posts={posts}/>
+      <Pagination 
+      current={currentPage} 
+      total={totalPages} 
+      onChange={onChange}
+      style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
+      />
     </Content>
   );
 };

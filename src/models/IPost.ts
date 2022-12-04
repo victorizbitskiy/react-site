@@ -7,5 +7,5 @@ export interface IPost{
 
 export interface PostResponse {
   posts: IPost[];
-  totalPages: Number;
+  totalPages: number;
 }
