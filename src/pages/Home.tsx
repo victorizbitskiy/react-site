@@ -22,7 +22,7 @@ const Home: FC = () => {
 
   return (
     <Content style={{ padding: '0 50px' }}>
-      {isLoading && <h1>Идет загрузка...</h1>}
+      <div style={{height: '10px'}}>{isLoading && <h1>Идет загрузка...</h1>}</div>
       {error && <h1>{error}</h1>}
       <Posts posts={posts}/>
       <Pagination 
