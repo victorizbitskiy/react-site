@@ -14,6 +14,10 @@ const items: MenuProps['items'] = [
     key: 'work',
   },
   {
+    label: <a href='/about' rel='noopener noreferrer'>About</a>,
+    key: 'about',
+  },
+  {
     label: <a href='https://github.com/victorizbitskiy' target="_blank" rel='noopener noreferrer'>GitHub</a>,
     key: 'github',
   },
@@ -41,7 +45,7 @@ const Navbar : FC = () => {
         selectedKeys={[current]}
         items={items}
         onClick={onClick}
-      />
+        />
     </Header>
   </Layout>
   );
