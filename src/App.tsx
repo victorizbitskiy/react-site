@@ -6,8 +6,6 @@ import Navbar from "./components/Navbar";
 import AppRouter from "./components/AppRouter";
 import SideBar from "./components/SideBar";
 
-const { Content, Footer} = Layout;
-
 const App: FC = () => {
 
   // useEffect(() => {
@@ -17,13 +15,13 @@ const App: FC = () => {
   <Layout>
     <Navbar />
     <Layout className="site-layout-background" style={{ padding: '24px 0', background: '#ffffff' }}>
-        <SideBar />
-        <Content style={{ padding: '0 24px', minHeight: 280 }}>
-        <AppRouter />
-        </Content>
-        <SideBar />
-      </Layout>
-    <Footer style={{ textAlign: 'center', position: "static", bottom: "0" }}>Copyright ©2022 All rights reserved</Footer>
+      <SideBar />
+        <Layout.Content style={{ padding: '0 24px', minHeight: 280 }}>
+          <AppRouter />
+        </Layout.Content>
+      <SideBar />
+    </Layout>
+    <Layout.Footer style={{ textAlign: 'center', position: "static", bottom: "0" }}>Copyright ©2022 All rights reserved</Layout.Footer>
   </Layout>
   );
 };
