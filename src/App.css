@@ -1,5 +1,3 @@
-/* @import "~antd/dist/antd.css"; */
-
 .post {
   padding: 20px;
   border: 1px solid rgb(0, 0, 0);
@@ -14,4 +12,14 @@
   margin-top: 15px;
   font-weight: lighter;
   
+}
+
+.App-footer {
+  text-align: center;
+  border-top: 1px solid #e8e8e8;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
 }
