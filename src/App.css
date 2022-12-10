@@ -23,3 +23,13 @@
   width: 100%;
   background-color: white;
 }
+
+.App-layout {
+  padding: 24px 0; 
+  background: white;
+}
+
+.App-content {
+  padding: 0 24px; 
+  min-height: 280 
+}

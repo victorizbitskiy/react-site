@@ -10,19 +10,16 @@ const App: FC = () => {
   return (
   <Layout >
     <Navbar />
-    <Layout style={{ padding: '24px 0', background: 'white' }}>
+    <Layout className="App-layout">
       <SideBar />
-        <Layout.Content style={{ padding: '0 24px', minHeight: 280 }}>
+        <Layout.Content className="App-content">
           <AppRouter />
         </Layout.Content>
       <SideBar />
     </Layout>
-    <div className="App-footer" >
-    <Layout.Footer >
+    <Layout.Footer className="App-footer">
         Copyright ©2022 All rights reserved
     </Layout.Footer>
-    </div>
-
   </Layout>
   );
 };
