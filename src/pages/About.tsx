@@ -1,33 +1,30 @@
-import {Col, Image, Layout, Row} from 'antd';
-import { Switch, Typography } from 'antd';
-import TextArea from 'antd/es/input/TextArea';
-import Title from 'antd/es/typography/Title';
 import React, {FC } from 'react';
+import {Col, Image, Layout, Row} from 'antd';
+import { Typography } from 'antd';
+import Title from 'antd/es/typography/Title';
 
 const About: FC = () => {
   return (
   <Layout style={{background: '#ffffff' }}>
     <Title level={2}>About</Title>
     <Layout.Content >
-    <Row>
-      <Col span={4}>
+    <Row style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgb(0, 0, 0)'}}>
+      <Col span={3} >
       <Image 
-      style={{ width: 200, float: 'left' }}
+      style={{float: 'left' }}
       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
-
       </Col>
-      <Col span={3} >
-      <Typography.Text ellipsis={false} >
-        <div style={{position: "fixed" , }}>
+      <Col span={11} >
+      <Typography.Text ellipsis={false} style={{ left: "20px", position: "relative" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut ligula ullamcorper, 
-          sodales ante dignissim, commodo lorem. In a egestas ex. Sed rhoncus lorem posuere massa rutrum consectetur. 
-          In at augue vitae risus fermentum volutpat sagittis nec ex.
-        </div>
-
+        sodales ante dignissim, commodo lorem. In a egestas ex. Sed rhoncus lorem posuere massa rutrum consectetur. 
+        In at augue vitae risus fermentum volutpat sagittis nec ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Suspendisse ut ligula ullamcorper, sodales ante dignissim, commodo lorem. In a egestas ex. 
+        Sed rhoncus lorem posuere massa rutrum consectetur. In at augue vitae risus fermentum volutpat sagittis nec ex.
       </Typography.Text>
       </Col>
-      <Col span={3} >
+      <Col span={10} >
       </Col>
     </Row>
     </Layout.Content>
