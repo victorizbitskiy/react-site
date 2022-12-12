@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IPost } from '../models/IPost';
 
 interface IPostItemProps {
@@ -6,8 +7,13 @@ interface IPostItemProps {
 }
 
 const PostItem: FC<IPostItemProps> = ({post}) => {
+  let navigate = useNavigate() 
+  const postOpen = () => {
+   navigate("post")
+  }
+
   return (
-    <div className='post'>
+    <div className='post' onClick={postOpen}>
       <div>
        {post.id}. {post.title}
         <div className='post-body'>
