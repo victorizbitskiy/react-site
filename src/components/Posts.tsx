@@ -10,7 +10,7 @@ const Posts: FC<IPostsProps> = ({posts}) => {
   return (
     <div className='posts'>
       {posts.map(post => 
-        <PostItem key={post.id} post={post}/>
+        <PostItem key={post.id} post={post} />
         )}
     </div>
   );

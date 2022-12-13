@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IPost } from "../../models/IPost";
-import { useState } from 'react';
 
 export const fetchPosts = createAsyncThunk(
   'post/fetchAll',
