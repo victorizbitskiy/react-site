@@ -9,9 +9,9 @@ import NavigateExternal from './NavigateExternal';
 const AppRouter: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/posts" element={<Home/>}/>
       <Route path="/work" element={<Work />}/>
-      <Route path="/post" element={<Post />}/>
+      <Route path="/posts/:id" element={<Post/>}/>
       <Route path="/about" element={<About />}/>
       <Route path="/github" element={<NavigateExternal to="https://github.com/victorizbitskiy"/>}/>
       <Route path="*" element={<Navigate to="/" replace />} />

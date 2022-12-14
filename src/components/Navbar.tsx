@@ -6,8 +6,8 @@ const { Header} = Layout;
 
 const items: MenuProps['items'] = [
   {
-    label: <a href='/' rel='noopener noreferrer'>Home</a>,
-    key: 'home',
+    label: <a href='/posts' rel='noopener noreferrer'>Home</a>,
+    key: 'posts',
   },
   {
     label: <a href='/work' rel='noopener noreferrer'>Work</a>,

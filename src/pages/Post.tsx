@@ -1,16 +1,25 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { IPost } from '../models/IPost';
+import { fetchPostById } from '../store/reducers/ActionCreators';
 
 const Post: FC = ()  => {
-  const [content, setContent] = useState<IPost>() 
-  console.log(content);
+  const {id} =  useParams<{id: string}>()
+  const dispatch = useAppDispatch()
+
+  useEffect(() =>{
+    dispatch(fetchPostById(Number(id)))
+  }, [])
+
+  const {post, isLoading, error} = useAppSelector(state => state.postReducer)
 
   return (
     <div>
-    {/* {content.post.id}. {content.post.title}
+    {post.id}. {post.title}
      <div>
-       {content.post.body}
-     </div> */}
+       {post.body}
+     </div>
  </div>  
   );
 };

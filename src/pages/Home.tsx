@@ -12,7 +12,7 @@ const Home: FC = () => {
     dispatch(fetchPosts(1))
   }, [])
 
-  const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postReducer)
+  const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postsReducer)
   const [currentPage, setCurrentPage] = useState(1)
   
   const onChange: PaginationProps['onChange'] = (page) => {

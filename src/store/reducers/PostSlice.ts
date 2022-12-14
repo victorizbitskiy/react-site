@@ -1,41 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPost, PostResponse } from "../../models/IPost";
-import { fetchPosts } from "./ActionCreators";
+import { IPost } from "../../models/IPost";
+import { fetchPostById } from "./ActionCreators";
 
 interface PostState {
-  posts: IPost[];
+  post: IPost;
   isLoading: boolean;
   error: string;
-  totalPages: number;
 }
 
 const initialState: PostState = {
-  posts: [],
+  post: {
+    id: 0,
+    userId: '',
+    title: '',
+    body: ''
+  },
   isLoading: false,
   error: '',
-  totalPages: 0,
 }
 
-export const postSlice = createSlice({
+export const postsSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.fulfilled.type, (state, action: PayloadAction<PostResponse>) => {
+      .addCase(fetchPostById.fulfilled.type, (state, action: PayloadAction<IPost>) => {
         state.isLoading = false
         state.error = ''
-        state.posts = action.payload.posts
-        state.totalPages = action.payload.totalPages
-      })
-      .addCase(fetchPosts.pending.type, (state) => {
-        state.isLoading = true
-      })
-      .addCase(fetchPosts.rejected.type, (state, action: PayloadAction<string>) => {
-        state.isLoading = false
-        state.error = action.payload
+        state.post = action.payload
       })
   }
 })
 
-export default postSlice.reducer;
+export default postsSlice.reducer;

@@ -5,7 +5,7 @@ export interface IPost{
   body: string
 }
 
-export interface PostResponse {
+export interface PostsResponse {
   posts: IPost[];
   totalPages: number;
 }

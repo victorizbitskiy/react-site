@@ -17,3 +17,16 @@ export const fetchPosts = createAsyncThunk(
     }
   }
 )
+
+export const fetchPostById = createAsyncThunk(
+  'post/fetchPostById',
+  async (id: number, thunkAPI) => {
+    try {
+      const response = await axios.get<IPost>(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      console.log(response)
+      return response.data
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Не удалось загрузить пост")
+    }
+  }
+)

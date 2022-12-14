@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react';
-import { useNavigate, redirect } from 'react-router-dom';
+import React, { FC } from 'react';
+import { useNavigate} from 'react-router-dom';
 import { IPost } from '../models/IPost';
 
 interface IPostItemProps {
@@ -8,10 +8,11 @@ interface IPostItemProps {
 
 const PostItem: FC<IPostItemProps> = ({post}) => {  
   let navigate = useNavigate()
-  const [postContent, setPostContent] = useState<IPost>(post) 
 
   const postOpen = () => {
-    navigate("post")
+    console.log(post.id);
+    
+    navigate(`/posts/${post.id}`)
   }
 
   return (
