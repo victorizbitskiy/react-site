@@ -1,7 +1,7 @@
+import { Content } from 'antd/es/layout/layout';
 import React, {FC, useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { IPost } from '../models/IPost';
 import { fetchPostById } from '../store/reducers/ActionCreators';
 
 const Post: FC = ()  => {
@@ -15,12 +15,14 @@ const Post: FC = ()  => {
   const {post, isLoading, error} = useAppSelector(state => state.postReducer)
 
   return (
-    <div>
-    {post.id}. {post.title}
-     <div>
-       {post.body}
+    <Content style={{ padding: '0 50px' }}>
+      <div style={{height: '10px'}}>{isLoading && <h1>Идет загрузка...</h1>}</div>
+      {error && <h1>{error}</h1>}   
+      {post.id}. {post.title}
+      <div>
+        {post.body}
      </div>
- </div>  
+   </Content>
   );
 };
 

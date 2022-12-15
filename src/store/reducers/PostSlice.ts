@@ -30,6 +30,13 @@ export const postsSlice = createSlice({
         state.error = ''
         state.post = action.payload
       })
+      .addCase(fetchPostById.pending.type, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchPostById.rejected.type, (state, action: PayloadAction<string>) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
   }
 })
 
