@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { IPost } from "../../models/IPost";
 
 export const fetchPosts = createAsyncThunk(
@@ -22,8 +22,7 @@ export const fetchPostById = createAsyncThunk(
   'post/fetchPostById',
   async (id: number, thunkAPI) => {
     try {
-      let response = await axios.get<IPost>(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      return response.data
+       return (await axios.get<IPost>(`https://jsonplaceholder.typicode.com/posts/${id}`)).data
     } catch (e) {
       return thunkAPI.rejectWithValue("Не удалось загрузить пост")
     }

@@ -9,9 +9,7 @@ interface IPostItemProps {
 const PostItem: FC<IPostItemProps> = ({post}) => {  
   let navigate = useNavigate()
 
-  const postOpen = () => {
-    console.log(post.id);
-    
+  const postOpen = () => {   
     navigate(`/posts/${post.id}`)
   }
 

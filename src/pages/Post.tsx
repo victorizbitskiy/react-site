@@ -16,12 +16,19 @@ const Post: FC = ()  => {
 
   return (
     <Content style={{ padding: '0 50px' }}>
-      <div style={{height: '10px'}}>{isLoading && <h1>Идет загрузка...</h1>}</div>
-      {error && <h1>{error}</h1>}   
-      {post.id}. {post.title}
+      {error && <h1>Ошибка</h1>}
+      {isLoading ?
+      <div style={{height: '10px'}}>
+        {<h1>Идет загрузка...</h1>}
+      </div>
+      :
       <div>
-        {post.body}
-     </div>
+         {post.id}. {post.title}
+         <div>
+          {post.body}
+         </div>
+       </div>
+    }
    </Content>
   );
 };

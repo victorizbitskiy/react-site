@@ -9,6 +9,7 @@ import NavigateExternal from './NavigateExternal';
 const AppRouter: FC = () => {
   return (
     <Routes>
+      <Route path="/" element={<Home/>}/>
       <Route path="/posts" element={<Home/>}/>
       <Route path="/work" element={<Work />}/>
       <Route path="/posts/:id" element={<Post/>}/>
