@@ -2,11 +2,13 @@ import React, {FC } from 'react';
 import {Col, Image, Layout, Row} from 'antd';
 import { Typography } from 'antd';
 import Title from 'antd/es/typography/Title';
+import '../pages/pages.css'
 
 const About: FC = () => {
   return (
-  <Layout style={{background: '#ffffff' }}>
-    <Title level={2}>About</Title>
+  <Layout className='Pages-layout'>
+    {/* <Title level={2}>About</Title> */}
+    <div style={{height: '25px'}}></div>
     <Layout.Content >
     <Row style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgb(0, 0, 0)'}}>
       <Col span={3} >
