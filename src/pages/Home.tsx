@@ -1,4 +1,4 @@
-import { Pagination, PaginationProps } from 'antd';
+import { Pagination, PaginationProps, Spin } from 'antd';
 import {Layout} from 'antd';
 import { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
@@ -24,7 +24,7 @@ const Home: FC = () => {
   return (
     <Layout className='Pages-layout' >
       <Layout.Content >
-      <div style={{height: '10px'}}>{isLoading && <h1>Идет загрузка...</h1>}</div>
+      <div style={{height: '10px', textAlign: 'center'}}>{isLoading && <Spin />}</div>
       {error && <h1>{error}</h1>}
       <Posts posts={posts}
       />
