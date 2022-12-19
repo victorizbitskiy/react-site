@@ -3,6 +3,7 @@ import {FC, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchPostById } from '../store/reducers/ActionCreators';
+import Title from 'antd/es/typography/Title';
 import '../pages/pages.css'
 
 const Post: FC = ()  => {
@@ -25,7 +26,8 @@ const Post: FC = ()  => {
         </div>
         :
         <div>
-          {post.id}. {post.title}
+          <Title level={2}>{post.id}. {post.title}</Title>
+
           <div>
             {post.body}
           </div>
