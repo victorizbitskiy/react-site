@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { Layout, Menu, MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,11 +16,7 @@ const items: MenuProps['items'] = [
   {
     label: <a href='/about' rel='noopener noreferrer'>About</a>,
     key: 'about',
-  },
-  {
-    label: <a href='https://github.com/victorizbitskiy' target="_blank" rel='noopener noreferrer'>GitHub</a>,
-    key: 'github',
-  },
+  }
 ]
 
 const Navbar : FC = () => {
@@ -30,7 +26,7 @@ const Navbar : FC = () => {
 
   const onClick: MenuProps['onClick'] = (e) => {
     e.domEvent.preventDefault() 
-    setCurrent(e.key);
+    setCurrent(e.key);    
     navigate(`/${e.key}`)
   };
 

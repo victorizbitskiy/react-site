@@ -4,7 +4,6 @@ import About from '../pages/About';
 import Home from '../pages/Home';
 import Post from '../pages/Post';
 import Work from '../pages/Work';
-import NavigateExternal from './NavigateExternal';
 
 const AppRouter: FC = () => {
   return (
@@ -14,7 +13,6 @@ const AppRouter: FC = () => {
       <Route path="/work" element={<Work />}/>
       <Route path="/posts/:id" element={<Post/>}/>
       <Route path="/about" element={<About />}/>
-      <Route path="/github" element={<NavigateExternal to="https://github.com/victorizbitskiy"/>}/>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
