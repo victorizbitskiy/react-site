@@ -1,6 +1,6 @@
-import { Layout, Spin } from 'antd';
+import { Breadcrumb, Layout, Spin } from 'antd';
 import {FC, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchPostById } from '../store/reducers/ActionCreators';
 import Title from 'antd/es/typography/Title';
@@ -17,24 +17,29 @@ const Post: FC = ()  => {
   const {post, isLoading, error} = useAppSelector(state => state.postReducer)
 
   return (
-    <Layout className='Pages-layout' >
-      <Layout.Content>
-        {error && <h1>Ошибка</h1>}
-        {isLoading ?
-        <div style={{height: '10px'}}>
-          <Spin />
-        </div>
-        :
-        <div>
-          <Title level={2}>{post.id}. {post.title}</Title>
+    <Layout className='Pages-layout'>
+        <Layout.Content>
+          {error && <h1>Ошибка</h1>}
 
-          <div>
-            {post.body}
-          </div>
-        </div>
-      }
-     </Layout.Content>
-   </Layout>
+          <Breadcrumb>
+            <Breadcrumb.Item ><Link to="/posts">Home</Link></Breadcrumb.Item>
+            <Breadcrumb.Item>{post.title}</Breadcrumb.Item>
+          </Breadcrumb>
+
+          {isLoading ?
+            <div style={{ height: '10px' }}>
+              <Spin />
+            </div>
+            :
+            <div>
+              <Title level={2}>{post.id}. {post.title}</Title>
+
+              <div>
+                {post.body}
+              </div>
+            </div>}
+        </Layout.Content>
+      </Layout>
   );
 };
 
