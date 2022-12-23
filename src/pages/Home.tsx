@@ -1,4 +1,4 @@
-import { Pagination, PaginationProps, Spin } from 'antd';
+import { FloatButton, Pagination, PaginationProps, Spin } from 'antd';
 import {Layout} from 'antd';
 import { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
@@ -33,7 +33,8 @@ const Home: FC = () => {
       total={totalPages} 
       onChange={onChange}
       style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
-      />
+      />      
+    <FloatButton.BackTop visibilityHeight={0} style={{bottom: '70px'}}/>
     </Layout.Content>
     </Layout>
     
