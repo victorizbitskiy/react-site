@@ -1,4 +1,4 @@
-import { FloatButton, Pagination, PaginationProps, Spin } from 'antd';
+import { AutoComplete, FloatButton, Input, Pagination, PaginationProps, SelectProps, Spin } from 'antd';
 import {Layout} from 'antd';
 import { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
@@ -21,18 +21,31 @@ const Home: FC = () => {
     dispatch(fetchPosts(page))
   }
 
+  const options = posts.map(post => ({
+    value: `${post.id}. ${post.title}`
+    }))
+
   return (
     <Layout className='Pages-layout' >
       <Layout.Content >
       <div style={{height: '10px', textAlign: 'center'}}>{isLoading && <Spin />}</div>
       {error && <h1>{error}</h1>}
-      <Posts posts={posts}
+
+      <AutoComplete
+        style={{ width: 200 }}
+        options={options}
+        placeholder="try to type something"
+        filterOption={(inputValue, option) =>
+          option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+        }
       />
+
+      <Posts posts={posts}/>
       <Pagination 
-      current={currentPage} 
-      total={totalPages} 
-      onChange={onChange}
-      style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
+        current={currentPage} 
+        total={totalPages} 
+        onChange={onChange}
+        style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
       />      
     <FloatButton.BackTop visibilityHeight={0} style={{bottom: '70px'}}/>
     </Layout.Content>
