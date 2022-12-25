@@ -3,7 +3,7 @@ import {Layout} from 'antd';
 import { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { fetchPosts } from '../store/reducers/ActionCreators';
+import { fetchPosts, fetchPostByTitleLike } from '../store/reducers/ActionCreators';
 import '../pages/pages.css'
 
 const Home: FC = () => {
@@ -16,14 +16,25 @@ const Home: FC = () => {
   const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postsReducer)
   const [currentPage, setCurrentPage] = useState(1)
 
-  const onChange: PaginationProps['onChange'] = (page) => {
+  const onChangePagination: PaginationProps['onChange'] = (page) => {
     setCurrentPage(page)
     dispatch(fetchPosts(page))
   }
-
   const options = posts.map(post => ({
     value: `${post.id}. ${post.title}`
     }))
+
+  const filterOption = (inputValue, option) => {
+    return option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+  }
+
+  const {postsLike, isLoadingLike, errorLike} = useAppSelector(state => state.postsByTitleLikeReducer)
+
+  const onChange = (inputValue, option) => {
+    if (inputValue){
+      dispatch(fetchPostByTitleLike(inputValue))
+    }
+  }
 
   return (
     <Layout className='Pages-layout' >
@@ -33,18 +44,25 @@ const Home: FC = () => {
 
       <AutoComplete
         style={{ width: 200 }}
-        options={options}
+        // options={options}
         placeholder="try to type something"
-        filterOption={(inputValue, option) =>
-          option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-        }
+        // filterOption={filterOption}
+        onChange={onChange}
       />
 
+      <div className='posts'>
+        {postsLike.map(post => 
+          <div>{post.title}</div> 
+          )}
+      </div>
+
       <Posts posts={posts}/>
+
+
       <Pagination 
         current={currentPage} 
         total={totalPages} 
-        onChange={onChange}
+        onChange={onChangePagination}
         style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
       />      
     <FloatButton.BackTop visibilityHeight={0} style={{bottom: '70px'}}/>

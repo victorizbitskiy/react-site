@@ -28,3 +28,14 @@ export const fetchPostById = createAsyncThunk(
     }
   }
 )
+
+export const fetchPostByTitleLike = createAsyncThunk(
+  'post/fetchPostByTitleLike',
+  async (titleLike: string, thunkAPI) => {
+    try {
+       return (await axios.get<IPost>(`https://jsonplaceholder.typicode.com/posts?title_like=${titleLike}`))
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Не удалось найти посты")
+    }
+  }
+)

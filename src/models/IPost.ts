@@ -9,3 +9,7 @@ export interface PostsResponse {
   posts: IPost[];
   totalPages: number;
 }
+
+export interface PostsByTitleLikeResponse {
+  data: IPost[];
+}

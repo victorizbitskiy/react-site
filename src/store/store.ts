@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import postsReducer from './reducers/PostsSlice';
 import postReducer from './reducers/PostSlice';
+import postsByTitleLikeReducer from './reducers/PostsByTitleLikeSlice';
 
 const rootReducer = combineReducers({
   postsReducer, 
-  postReducer
+  postReducer,
+  postsByTitleLikeReducer
 })
 
 export const setupStore = () => {
