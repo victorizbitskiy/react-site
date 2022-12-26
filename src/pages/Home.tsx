@@ -3,14 +3,14 @@ import {Layout} from 'antd';
 import { FC, useEffect, useState } from 'react';
 import Posts from '../components/Posts';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { fetchPosts, fetchPostByTitleLike } from '../store/reducers/ActionCreators';
+import { fetchPosts} from '../store/reducers/ActionCreators';
 import '../pages/pages.css'
 
 const Home: FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() =>{
-    dispatch(fetchPosts(1))
+    dispatch(fetchPosts({ page: 1 }))
   }, [])
 
   const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postsReducer)
@@ -18,21 +18,23 @@ const Home: FC = () => {
 
   const onChangePagination: PaginationProps['onChange'] = (page) => {
     setCurrentPage(page)
-    dispatch(fetchPosts(page))
-  }
-  const options = posts.map(post => ({
-    value: `${post.id}. ${post.title}`
+    dispatch(fetchPosts({
+      page: page,
     }))
-
-  const filterOption = (inputValue, option) => {
-    return option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
   }
+  // const options = posts.map(post => ({
+  //   value: `${post.id}. ${post.title}`
+  //   }))
 
-  const {postsLike, isLoadingLike, errorLike} = useAppSelector(state => state.postsByTitleLikeReducer)
+  // const filterOption = (inputValue, option) => {
+  //   return option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+  // }
 
-  const onChange = (inputValue, option) => {
+  const selectOnChange = (inputValue, option) => {
     if (inputValue){
-      dispatch(fetchPostByTitleLike(inputValue))
+      dispatch(fetchPosts({
+        titleLike: inputValue
+    }))
     }
   }
 
@@ -47,17 +49,10 @@ const Home: FC = () => {
         // options={options}
         placeholder="try to type something"
         // filterOption={filterOption}
-        onChange={onChange}
+        onChange={selectOnChange}
       />
 
-      <div className='posts'>
-        {postsLike.map(post => 
-          <div>{post.title}</div> 
-          )}
-      </div>
-
       <Posts posts={posts}/>
-
 
       <Pagination 
         current={currentPage} 
