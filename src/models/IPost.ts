@@ -12,5 +12,5 @@ export interface PostsResponse {
 
 export interface PostsRequestsParams {
   page?: number,
-  titleLike?: string
+  titleLike: string
 }

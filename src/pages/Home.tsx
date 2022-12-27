@@ -10,25 +10,20 @@ const Home: FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() =>{
-    dispatch(fetchPosts({ page: 1 }))
+    dispatch(fetchPosts({ page: 1, titleLike: '' }))
   }, [])
 
   const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postsReducer)
-  const [currentPage, setCurrentPage] = useState(1)
+
+  const [currentSelectValue, setSelectValue] = useState('')
 
   const onChangePagination: PaginationProps['onChange'] = (page) => {
-    setCurrentPage(page)
+    setSelectValue(currentSelectValue)
     dispatch(fetchPosts({
       page: page,
+      titleLike: currentSelectValue,
     }))
   }
-  // const options = posts.map(post => ({
-  //   value: `${post.id}. ${post.title}`
-  //   }))
-
-  // const filterOption = (inputValue, option) => {
-  //   return option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-  // }
 
   const selectOnChange = (inputValue, option) => {
     if (inputValue){
@@ -46,16 +41,13 @@ const Home: FC = () => {
 
       <AutoComplete
         style={{ width: 200 }}
-        // options={options}
         placeholder="try to type something"
-        // filterOption={filterOption}
         onChange={selectOnChange}
       />
 
       <Posts posts={posts}/>
 
-      <Pagination 
-        current={currentPage} 
+      <Pagination  
         total={totalPages} 
         onChange={onChangePagination}
         style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
