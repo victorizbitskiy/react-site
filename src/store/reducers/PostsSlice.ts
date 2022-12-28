@@ -6,14 +6,14 @@ interface PostsState {
   posts: IPost[];
   isLoading: boolean;
   error: string;
-  totalPages: number;
+  totalPosts: number;
 }
 
 const initialState: PostsState = {
   posts: [],
   isLoading: false,
   error: '',
-  totalPages: 0,
+  totalPosts: 0,
 }
 
 export const postsSlice = createSlice({
@@ -26,7 +26,7 @@ export const postsSlice = createSlice({
         state.isLoading = false
         state.error = ''
         state.posts = action.payload.posts
-        state.totalPages = action.payload.totalPages
+        state.totalPosts = action.payload.totalPosts
       })
       .addCase(fetchPosts.pending.type, (state) => {
         state.isLoading = true

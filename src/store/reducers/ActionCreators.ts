@@ -8,13 +8,13 @@ export const fetchPosts = createAsyncThunk(
     try {
       if (input.page) {
         const response = Array( await (await axios.get<[]>(`https://jsonplaceholder.typicode.com/posts?title_like=${input.titleLike}`)).data)
-        const pageCount = Math.ceil( response[0].length / 10 )
+        // const pageCount = Math.ceil( response[0].length / 10 )
         const postsFrom = input.page * 10 - 10 
         const postsTo = input.page * 10 
         const posts = response[0].slice(postsFrom, postsTo)
         return ({ 
           posts: posts,
-          totalPages: pageCount // response.headers["x-total-count"],
+          totalPages: response[0].length // response.headers["x-total-count"],
         })
   
       }else{

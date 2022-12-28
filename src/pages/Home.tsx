@@ -13,7 +13,7 @@ const Home: FC = () => {
     dispatch(fetchPosts({ page: 1, titleLike: '' }))
   }, [])
 
-  const {posts, isLoading, error, totalPages} = useAppSelector(state => state.postsReducer)
+  const {posts, isLoading, error, totalPosts} = useAppSelector(state => state.postsReducer)
 
   const [currentSelectValue, setSelectValue] = useState('')
 
@@ -46,9 +46,9 @@ const Home: FC = () => {
       />
 
       <Posts posts={posts}/>
-
       <Pagination  
-        total={totalPages} 
+        defaultCurrent={1}
+        total={totalPosts} 
         onChange={onChangePagination}
         style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
       />      
