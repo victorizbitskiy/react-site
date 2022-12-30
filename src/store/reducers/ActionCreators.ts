@@ -7,27 +7,9 @@ export const fetchPosts = createAsyncThunk(
   async (input:  PostsRequestsParams, thunkAPI) => {
     try {
       if (input.page) {
-        const response = Array( (await axios.get<[]>(`https://jsonplaceholder.typicode.com/posts?title_like=${input.titleLike}`)).data)
-        const totalPosts = response[0].length 
-        const postsFrom = input.page * 10 - 10 
-        const postsTo = input.page * 10 
-        const posts = response[0].slice(postsFrom, postsTo)
-        return ({ 
-          posts: posts,
-          totalPosts: totalPosts // response.headers["x-total-count"],
-        })
-  
+        return postRequest(input.page, input.titleLike)  
       }else{
-        const response = Array( (await axios.get<[]>(`https://jsonplaceholder.typicode.com/posts?title_like=${input.titleLike}`)).data)
-        const totalPosts = response[0].length 
-        const postsFrom = 1 * 10 - 10 
-        const postsTo = 1 * 10 
-        const posts = response[0].slice(postsFrom, postsTo)
-        return ({ 
-          posts: posts,
-          totalPosts: totalPosts // response.headers["x-total-count"],
-        })
-  
+        return postRequest(1, input.titleLike)    
       }
     } catch (e) {
       return thunkAPI.rejectWithValue("Не удалось загрузить посты")
@@ -45,3 +27,15 @@ export const fetchPostById = createAsyncThunk(
     }
   }
 )
+
+async function postRequest (page: number, titleLike: string) {
+  const response = Array( (await axios.get<[]>(`https://jsonplaceholder.typicode.com/posts?title_like=${titleLike}`)).data)
+  const totalPosts = response[0].length 
+  const postsFrom = page * 10 - 10 
+  const postsTo = page * 10 
+  const posts = response[0].slice(postsFrom, postsTo)
+  return ({ 
+    posts: posts,
+    totalPosts: totalPosts
+  })
+}
