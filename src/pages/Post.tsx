@@ -8,7 +8,7 @@ import Title from 'antd/es/typography/Title';
 import '../pages/pages.css'
 
 const customIcons: Record<number, React.ReactNode> = {
-  1: <FrownOutlined />,
+  1: <FrownOutlined/>,
   2: <FrownOutlined />,
   3: <MehOutlined />,
   4: <SmileOutlined />,
@@ -31,6 +31,8 @@ const Post: FC = ()  => {
     setRateValue(value)
     localStorage.setItem(post.id.toString(), value.toString())
   }
+
+  const toolTipsDesc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
   return (
     <Layout className='Pages-layout'>
@@ -55,7 +57,8 @@ const Post: FC = ()  => {
             </div>}
 
           <Rate 
-          character={({ index }: { index: number }) => customIcons[index + 1]}
+          tooltips={toolTipsDesc} 
+          character={({ index }: { index: number }) => customIcons[index + 1] }
           onChange={setRateValueToLocalStorage} 
           value={rateValue}
            />
