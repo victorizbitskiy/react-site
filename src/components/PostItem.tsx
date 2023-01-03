@@ -18,10 +18,10 @@ const PostItem: FC<IPostItemProps> = ({post}) => {
       <div>
        {post.id}. {post.title}
         <div className='post-body'>
-          {post.body}
+          {post.body.slice(0, 50)}...
         </div>
-    </div>      
-  </div>
+      </div>      
+    </div>
   );
 };
 

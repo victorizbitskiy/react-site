@@ -22,12 +22,14 @@ const SideBar: FC = () => {
     width={200} 
     style={{ padding: '24px 0', background: '#ffffff', marginRight: '10px' }} 
   >
-
-    <AutoComplete
-      style={{ width: 200 }}
-      placeholder="try to type something"
-      onChange={selectOnChange}
-    />
+    <div>
+      <div style={{paddingBottom: "10px", fontWeight: "bold"}}>Найти пост:</div>
+      <AutoComplete
+        style={{ width: 200 }}
+        placeholder="try to type something"
+        onChange={selectOnChange}
+      />
+    </div>
   </Sider>
   );
 };
