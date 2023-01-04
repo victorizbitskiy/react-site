@@ -45,7 +45,7 @@ const Post: FC = ()  => {
           </Breadcrumb>
 
           {isLoading ?
-            <div style={{ height: '10px' }}>
+            <div className='page-home-spin'>
               <Spin />
             </div>
             :

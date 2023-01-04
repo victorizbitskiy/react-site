@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IPost, PostsRequestsParams } from "../../models/IPost";
+import { IPost, PostsRequestsParams, PostsResponse } from "../../models/IPost";
 
 export const fetchPosts = createAsyncThunk(
   'post/fetchAll',
@@ -28,7 +28,8 @@ export const fetchPostById = createAsyncThunk(
   }
 )
 
-async function postRequest (page: number, titleLike: string) {
+
+async function postRequest (page: number, titleLike: string): Promise<PostsResponse> {
   const pageSize = 10
   const response = Array( (await axios.get<[]>(`https://jsonplaceholder.typicode.com/posts?title_like=${titleLike}`)).data)
   const totalPosts = response[0].length 

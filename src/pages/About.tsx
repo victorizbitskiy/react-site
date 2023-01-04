@@ -5,18 +5,17 @@ import '../pages/pages.css'
 
 const About: FC = () => {
   return (
-  <Layout className='Pages-layout'>
-    <div style={{height: '25px'}}></div>
-    <Layout.Content >
-    <Row style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgb(0, 0, 0)'}}>
+  <Layout className='pages-layout'>
+    <Layout.Content className='page-about-content'>
+    <Row className='page-about-row'>
       <Col span={3} >
       <Image 
-      style={{float: 'left' }}
-      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        className='page-about-image'
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
       </Col>
       <Col span={11} >
-      <Typography.Text ellipsis={false} style={{ left: "20px", position: "relative" }}>
+      <Typography.Text className='page-about-text' ellipsis={false}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut ligula ullamcorper, 
         sodales ante dignissim, commodo lorem. In a egestas ex. Sed rhoncus lorem posuere massa rutrum consectetur. 
         In at augue vitae risus fermentum volutpat sagittis nec ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

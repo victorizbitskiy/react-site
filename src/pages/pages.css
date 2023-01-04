@@ -1,4 +1,34 @@
-.Pages-layout{
+.pages-layout{
   background: #ffffff;
   padding: 0 0px
+}
+
+.page-about-content {
+  padding: 15px;
+}
+
+.page-about-row {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0)
+}
+
+.page-about-image {
+  float: left
+}
+
+.page-about-text {
+  left: 20px; 
+  position: relative
+}
+
+.page-home-spin{
+  height: 10px;
+  text-align: center
+}
+
+.page-home-pagination{
+  margin-top: 10px; 
+  display: flex; 
+  justify-content: center 
 }

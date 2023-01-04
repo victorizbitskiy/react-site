@@ -25,17 +25,19 @@ const Home: FC = () => {
   }
 
   return (
-    <Layout className='Pages-layout' >
+    <Layout className='pages-layout' >
       <Layout.Content >
-        <div style={{height: '10px', textAlign: 'center'}}>{isLoading && <Spin />}</div>
+        <div className='page-home-spin'>
+          {isLoading && <Spin />}
+        </div>
         {error && <h1>{error}</h1>}
 
         <Posts posts={posts}/>
-        <Pagination  
+        <Pagination 
+          className='page-home-pagination' 
           defaultCurrent={1}
           total={totalPosts} 
           onChange={onChangePagination}
-          style={{marginTop: '10px', display: 'flex', justifyContent: 'center' }}
         />      
         <FloatButton.BackTop visibilityHeight={0} style={{bottom: '70px'}}/>
       </Layout.Content>

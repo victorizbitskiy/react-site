@@ -3,9 +3,8 @@ import '../pages/pages.css'
 
 const Work = () => {
   return (
-    <Layout className='Pages-layout'>
-      <div style={{height: '25px'}}></div>
-      <Layout.Content >
+    <Layout className='pages-layout'>
+      <Layout.Content className='pages-layout'>
         WORK
       </Layout.Content>
     </Layout>
