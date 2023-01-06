@@ -1,10 +1,12 @@
-.my-ant-layout-sider {
-  padding: 24px 0;
+.ant-layout .ant-layout-sider {
+  position: relative;
+  min-width: 0;
   background: white;
+  transition: all 0.2s;
 }
 
-.my-sider-search {
-  padding-bottom: 10px; 
-  font-weight: bold; 
-  background: white
+.sider-search {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }

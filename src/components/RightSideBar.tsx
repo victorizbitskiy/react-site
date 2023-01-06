@@ -18,16 +18,14 @@ const SideBar: FC = () => {
   }
 
   return (
-    <div className='my-ant-layout-sider'>
-      <Sider width={200}>
-          <div className='my-sider-search'>Найти пост:</div>
-          <AutoComplete
-            style={{ width: 200 }}
-            placeholder="try to type something"
-            onChange={selectOnChange}
-          />
-      </Sider>
-  </div>
+    <Sider width={200} >
+      <div className='sider-search'>Найти пост:</div>
+      <AutoComplete
+        style={{ width: 200 }}
+        placeholder="try to type something"
+        onChange={selectOnChange}
+     />
+    </Sider>
   );
 };
 
