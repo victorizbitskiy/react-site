@@ -18,14 +18,16 @@ const SideBar: FC = () => {
   }
 
   return (
-    <Sider width={200} >
+    <>
+    <Sider className='side-bar' width={180} >
       <div className='sider-search'>Найти пост:</div>
       <AutoComplete
-        style={{ width: 200 }}
+        style={{ width: 180 }}
         placeholder="try to type something"
         onChange={selectOnChange}
-     />
+      />
     </Sider>
+    </>
   );
 };
 

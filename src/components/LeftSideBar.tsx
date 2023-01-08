@@ -6,7 +6,9 @@ const {Sider} = Layout
 
 const SideBar: FC = () => {
   return (
-    <Sider width={200}/>
+    <>
+      <Sider className='side-bar' width={200}/>
+    </>
   );
 };
 
